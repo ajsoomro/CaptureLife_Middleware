@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+						http://www.springframework.org/schema/util 
+						http://www.springframework.org/schema/util/spring-util-4.0.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+	>
+
+	<description>
+		<!--
+			- SpringServlet application context for the Spring web MVC
+		-->
+	</description>
+
+	<!-- ========================= Service Factory ========================= -->
+
+	<bean id="serviceFactory" class="com.rc.delegate.RCServiceFactory">
+		<property name="serviceMap">
+			<map>
+				<entry key="wcs" value-ref="wcsService" />
+				<entry key="hybris" value-ref="hybrisService" />
+				<entry key="magento" value-ref="magentoService" />	
+			</map>
+		</property>
+	</bean>
+
+	<!-- ========================= Service Locator ========================= -->
+	
+	<bean id="serviceLocator" class="com.rc.delegate.RCServiceLocator">
+		<property name="serviceFactory" ref="serviceFactory"></property>
+	</bean>
+		
+	<!-- ========================= DELEGATE DEFINITIONS ========================= -->	
+	
+	<bean id="delegate" class="com.rc.delegate.RCDelegate">
+		<property name="serviceLocator" ref="serviceLocator"></property>
+	</bean>
+
+	<!-- ========================= SERVICE DEFINITIONS ========================= -->	
+
+	<bean id="wcsService" class="com.rc.servicefacade.service.WCSServiceImpl">
+	</bean>
+	
+	<bean id="hybrisService" class="com.rc.servicefacade.service.HybrisServiceImpl"/>
+	
+	<bean id="magentoService" class="com.rc.servicefacade.service.MagentoServiceImpl"/>
+</beans>
