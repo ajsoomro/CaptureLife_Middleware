@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <section name="source">
+        <param name="platform" value="WCS" />
+        <param name="version" value="v7" />
+        <param name="featurePack" value="fep7" />
+        <param name="storeId" value="10001" />
+        <param name="hostname" value="arandell.royalcyber.com" />
+   	    <param name="URI" value="/wcs/resources/store/[storeId]" />	 	        
+       	<param name="parameters" value="storeId:10001" /> <!-- For more parameters use ";" as delimiter -->
+    </section>
+</configuration>

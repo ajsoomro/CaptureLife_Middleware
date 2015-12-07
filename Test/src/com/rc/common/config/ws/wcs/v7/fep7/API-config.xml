@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <api-category name="categoryAPIs">
+    	<api name="getTopCategories">
+	        <param name="URI" value="/categoryview" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/@top" />
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. Can have other possible input formats like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have other possible response formats like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+    	<api name="byParentCategory">
+	        <param name="URI" value="/categoryview/byParentCategory" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/[categoryId]" />
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. can have possible values like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have possible values like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+        
+        <!-- 11/25 -->
+        <api name="getProductByCategoryType">
+	        <param name="URI" value="/categoryview" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/[categoryType]" />
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. can have possible values like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have possible values like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+        
+        
+    </api-category>
+    <api-category name="productAPIs">
+    	<api name="getProductByID">
+	        <param name="URI" value="/productview" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/byId/[productId]" />
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. can have possible values like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have possible values like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+    	<api name="bySearchTerm">
+	        <param name="URI" value="/productview/bySearchTerm" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/[productName]" />
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. can have possible values like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have possible values like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+        
+     
+    	<api name="getProductByCategory">
+	        <param name="URI" value="/productview/byCategory" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/[categoryId]" />
+	        <param name="consumes" value="URL" /> 
+	        <param name="produces" value="application/json" /> 
+	        <param name="https" value="true" />
+        </api> 
+        
+        
+         
+    </api-category>
+    <api-category name="storeLocator">
+    	<api name="byLocation">
+	        <param name="URI" value="/storelocator/byLocation" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="?city=[city]&amp;radius=[radius]&amp;siteLevelStoreSearch=[siteLevelStoreSearch]"/>
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. Can have other possible input formats like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have other possible response formats like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+    	<api name="byZipcode">
+	        <param name="URI" value="/storelocator" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/latitude/[latitude]/longitude/[longitude]?maxItems=[maxItems]&amp;siteLevelStoreSearch=[siteLevelStoreSearch]&amp;responseFormat=[responseFormat]"/>
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. Can have other possible input formats like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have other possible response formats like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+    </api-category>
+    <api-category name="shoppingCartAPIs">
+        <api name="addToCart">
+         <param name="URI" value="/cart" />
+         <param name="requestMethod" value="POST" />
+         <!-- <param name="parameters" value="/userId/[userId]/personalizationID/[personalizationID]/WCToken/[WCToken]/WCTrustedToken/[WCTrustedToken]" /> -->
+         <param name="jsonParameters" value='com.rc.wc.dto.addtoCart' />
+         <param name="consumes" value="application/json" />  <!-- Default consumes attributes from URL. Can have other possible input formats like XML,JSON -->
+         <param name="produces" value="application/json" />  <!-- Can have other possible response formats like XML,HTML,plain_text etc.. -->
+         <param name="https" value="true" />
+        </api>
+    	<api name="editCartItem">
+	        <param name="URI" value="/editItem" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/itemId/[itemId]/quantity/[quantity]" />
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. can have possible values like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have possible values like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+        
+        <!--  Delete an item from cart based on orderItemId -->
+        <!-- Work on this onwards -->
+    	<api name="deleteFromCart">
+	        <param name="URI" value="/cart" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/itemId/[itemId]" />
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. can have possible values like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have possible values like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+        
+        <!-- Get Cart Details -->
+        <api name="getCart">
+	        <param name="URI" value="/cart" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/@self" />
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. can have possible values like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have possible values like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+        
+        <!-- 11/30 -->
+        <api name="getAssignedPromotionCode">
+	        <param name="URI" value="/cart" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/@self/assigned_promotion_code" />
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. can have possible values like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have possible values like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+        
+        
+    </api-category>
+    <api-category name="loginAPIs">
+    	<api name="byGuestIdentity">
+	        <param name="URI" value="/guestidentity" />
+	        <param name="requestMethod" value="POST" />
+	       <!--  <param name="parameters" value="/@top" /> -->
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. Can have other possible input formats like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have other possible response formats like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+        <api name="byLoginIdentity">
+			<param name="URI" value="/loginidentity" />
+			<param name="requestMethod" value="POST" />
+			<!-- <param name="parameters" value="{[logonId]=logonId, [logonPassword]=logonPassword}" /> -->
+			<param name="consumes" value="URL" />  <!-- Default consumes attributes from URL. Can have other possible input formats like XML,JSON -->
+			<param name="produces" value="application/json" />  <!-- Can have other possible response formats like XML,HTML,plain_text etc.. -->
+			<param name="https" value="true" />
+		</api>  	
+    </api-category>
+    
+    <!-- 11/30 -->
+    <api-category name="searchSiteContentAPIs">
+    	<api name="getKeywordSuggestion">
+    		<param name="URI" value="/sitecontent/keywordSuggestionsByTerm" />
+    		<param name="requestMethod" value="GET" />
+    		<param name="parameters" value="/[keywordSuggestion]" />
+    		<param name="consumes" value="URL" />
+    		<param name="produces" value="application/json" />
+    		<param name="https" value="true" />
+    	</api>   
+    </api-category>
+    
+    
+    
+</configuration>
