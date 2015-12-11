@@ -37,7 +37,6 @@ public class StoreLocatorRESTfulServicesImpl extends RESTFulBaseServiceImpl impl
     	ResponseDTO responseDTO = null;
     	
     	try {
-    		
     		Map<String, String> param = new HashMap<String, String>();
     		param.put(CommonUtility.formatParamNameForMap(Constants.CITY), city);
     		param.put(CommonUtility.formatParamNameForMap(Constants.SITE_LEVEL_STORE_SEARCH), siteLevelStoreSearch);

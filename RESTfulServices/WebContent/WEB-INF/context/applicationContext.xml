@@ -30,5 +30,6 @@
 	<bean id="productBasedRESTfulServices" class="com.rc.ws.productapis.impl.ProductBasedRESTfulServicesImpl"/>
 	<bean id="storeLocatorRESTfulServices" class="com.rc.ws.productapis.impl.StoreLocatorRESTfulServicesImpl"/>
 	<bean id="categoryBasedRESTfulServices" class="com.rc.ws.productapis.impl.CategoryBasedRESTfulServicesImpl"/>
+	<bean id="wishListBasedRESTfulServices" class="com.rc.ws.productapis.impl.WishListBasedRESTfulServicesImpl"/>
     
 </beans>

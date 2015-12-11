@@ -12,6 +12,10 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
+
 import com.rc.common.exception.RCSystemException;
 import com.rc.dto.base.BaseConverterDTO;
 import com.rc.dto.base.BaseDTO;
@@ -27,17 +31,14 @@ public class ParserUtility {
 	public static Object unmarshal(BaseDTO inputDto, File file) throws Exception{
 
 		String METHOD_NAME = CLASS_NAME+".unmarshal";
-				
 		logger.info(METHOD_NAME+": Start unmarshal");
 		
 		Object outputObject = null;
 		try {
-			
 			if(!file.canRead()){
 				  logger.error(METHOD_NAME+" : file does not exist path - "+file.getAbsolutePath());
 				  throw new Exception("File not found");
 			}
-			
 			logger.info(METHOD_NAME+": Unmarshal file = '"+file.getName()+"' to object = '"+inputDto.getClass().getName()+"'");
 			JAXBContext jaxbContext = JAXBContext.newInstance(inputDto.getClass());
 
@@ -50,7 +51,6 @@ public class ParserUtility {
 		  }
 
 		logger.info(METHOD_NAME+": End unmarshal");
-		
 		return outputObject;
 	}
 	
@@ -84,5 +84,48 @@ public class ParserUtility {
 		adapterResponse.setConvertedJavaObject(dto);
 		
 		logger.info(METHOD_NAME+" : Exit executeService");
+	}
+	
+	
+	
+	
+	
+	
+	/**
+	 * @author abdul.jalil
+	 * @param obj
+	 * @return
+	 */
+	
+	public static String JavaToJson(Object obj){
+		GsonBuilder builder = new GsonBuilder();
+		Gson gson = builder.create();
+		String s = gson.toJson(obj);
+		return s;
+		
+	}
+	
+	/**
+	 * 
+	 * @author abdul.jalil
+	 * @param jsonText
+	 * @param clazz
+	 * @return
+	 * @throws RCSystemException 
+	 */
+	public static  <T>  T JsonTOJava(String jsonText, Class<T> clazz) throws RCSystemException {
+		String METHOD_NAME ="JsonTOJava(String jsonText, Class<T> clazz)";
+		GsonBuilder builder = new GsonBuilder();
+		Gson gson = builder.create();
+		try {
+			return gson.fromJson(jsonText, clazz);
+		
+		}catch(JsonSyntaxException e){
+			logger.error(METHOD_NAME+" : JSON Syntext exception  = "+e.getMessage(), e);
+			throw new RCSystemException(METHOD_NAME+" : JSON parser exception  = "+e.getMessage(), e);
+		}catch(Exception e){
+			logger.error(e.fillInStackTrace());
+		}
+		return null;
 	}
 }

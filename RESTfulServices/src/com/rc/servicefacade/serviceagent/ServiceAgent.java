@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -62,6 +64,7 @@ public class ServiceAgent{
 			
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			
+			
 			logger.debug(METHOD_NAME+" : Request Method = "+adapterDTO.getApiDTO().getRequestMethod());
 			if(adapterDTO.getApiDTO().getRequestMethod() != null)
 				conn.setRequestMethod(adapterDTO.getApiDTO().getRequestMethod().toUpperCase());
@@ -73,13 +76,36 @@ public class ServiceAgent{
 				conn.setRequestProperty("Accept", adapterDTO.getApiDTO().getProduces());
 			else 
 				conn.setRequestProperty("Accept", "application/json");
+			
+			
+			/*
+			 * to add code for body variables 
+			 * 
+			 */
+			
+			
+			if(adapterDTO.getBody()!=null | !adapterDTO.getBody().equals("")){
+				conn.setDoOutput(true);
+				byte[] outputBytes = adapterDTO.getBody().getBytes("UTF-8");
+				OutputStream  wr = conn.getOutputStream();
+				wr.write(outputBytes);
+				wr.close();
+			}
+			
 
 			if (conn.getResponseCode() != 200) {
 				logger.error(METHOD_NAME+" : Error occured while calling the service. ResponseCode = "+conn.getResponseCode());
 				adapterResponse.setErrorCode(String.valueOf(conn.getResponseCode()));
 			}
-
+			
+			
+			
+			
+			
 			jsonIO = conn.getInputStream();
+			
+
+			
 			
 			StringBuilder jsonBuilder = new StringBuilder();
 			BufferedReader br = new BufferedReader(new InputStreamReader(jsonIO));

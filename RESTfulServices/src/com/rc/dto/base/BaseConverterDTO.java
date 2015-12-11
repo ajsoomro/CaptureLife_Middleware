@@ -10,19 +10,19 @@ import com.rc.dto.pojo.MetaData;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class BaseConverterDTO extends BaseDTO {
 
-	private String recordSetTotal;
+	private Integer recordSetTotal;
 	private String resourceId;
 	private String resourceName;
-	private String recordSetComplete;
-	private String recordSetStartNumber;
-	private String recordSetCount;
+	private Boolean recordSetComplete;
+	private Integer recordSetStartNumber;
+	private Integer recordSetCount;
 	private List<MetaData> metaData;
 	
-	public String getRecordSetTotal() {
+	public Integer getRecordSetTotal() {
 		return recordSetTotal;
 	}
 	@JsonProperty("recordSetTotal")
-	public void setRecordSetTotal(String recordSetTotal) {
+	public void setRecordSetTotal(Integer recordSetTotal) {
 		this.recordSetTotal = recordSetTotal;
 	}
 	public String getResourceId() {
@@ -39,25 +39,25 @@ public class BaseConverterDTO extends BaseDTO {
 	public void setResourceName(String resourceName) {
 		this.resourceName = resourceName;
 	}
-	public String getRecordSetComplete() {
+	public Boolean getRecordSetComplete() {
 		return recordSetComplete;
 	}
 	@JsonProperty("recordSetComplete")
-	public void setRecordSetComplete(String recordSetComplete) {
+	public void setRecordSetComplete(Boolean recordSetComplete) {
 		this.recordSetComplete = recordSetComplete;
 	}
-	public String getRecordSetStartNumber() {
+	public Integer getRecordSetStartNumber() {
 		return recordSetStartNumber;
 	}
 	@JsonProperty("recordSetStartNumber")
-	public void setRecordSetStartNumber(String recordSetStartNumber) {
+	public void setRecordSetStartNumber(Integer recordSetStartNumber) {
 		this.recordSetStartNumber = recordSetStartNumber;
 	}
-	public String getRecordSetCount() {
+	public Integer getRecordSetCount() {
 		return recordSetCount;
 	}
 	@JsonProperty("recordSetCount")
-	public void setRecordSetCount(String recordSetCount) {
+	public void setRecordSetCount(Integer recordSetCount) {
 		this.recordSetCount = recordSetCount;
 	}
 	public List<MetaData> getMetaData() {

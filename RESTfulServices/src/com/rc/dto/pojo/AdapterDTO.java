@@ -8,6 +8,7 @@ public class AdapterDTO extends BaseDTO {
 
 	private String URL;
 	private Map<String, String> requestParameters;
+	private String body;
 	private BaseApiConfigDTO apiDTO;
 	private BaseStoreConfigDTO baseStoreConfigDTO;
 
@@ -41,5 +42,13 @@ public class AdapterDTO extends BaseDTO {
 
 	public void setRequestParameters(Map<String, String> requestParameters) {
 		this.requestParameters = requestParameters;
+	}
+
+	public String getBody() {
+		return body;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
 	}
 }

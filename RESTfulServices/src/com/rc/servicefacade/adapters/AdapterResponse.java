@@ -4,7 +4,6 @@ import com.rc.dto.base.BaseConverterDTO;
 
 public class AdapterResponse {
 
-
 	/** success or failure code of service. */
 	private String returnCode;
 

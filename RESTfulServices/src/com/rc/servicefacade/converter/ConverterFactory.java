@@ -35,6 +35,7 @@ public class ConverterFactory {
 		converterMap.put("wcs/v7/fep7/storelocator","com.rc.dto.wcs.v7.fep7.StoreLocatorJSON");
 		converterMap.put("wcs/v7/fep7/categoryview","com.rc.dto.wcs.v7.fep7.CategoryViewJSON");
 		converterMap.put("wcs/v7/fep7/categoryview/byParentCategory","com.rc.dto.wcs.v7.fep7.CategoryViewJSON");
+		converterMap.put("wcs/v7/fep7/wishlist","com.rc.dto.wcs.v7.fep7.WishListDefaultJSON");
 
 	}
 

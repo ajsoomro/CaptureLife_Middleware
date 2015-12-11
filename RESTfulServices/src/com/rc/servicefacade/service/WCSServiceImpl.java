@@ -15,6 +15,7 @@ import com.rc.servicefacade.adapters.Adapter;
 import com.rc.servicefacade.adapters.AdapterFactory;
 import com.rc.servicefacade.adapters.AdapterResponse;
 import com.rc.servicefacade.base.RCBaseService;
+import com.sun.corba.se.impl.orbutil.closure.Constant;
 
 @Component
 public class WCSServiceImpl extends RCBaseService {
@@ -53,14 +54,19 @@ public class WCSServiceImpl extends RCBaseService {
 		
 		if(aServiceMap.containsKey(Constants.PARAMETERS)) {
 			
+			
 			@SuppressWarnings("unchecked")
 			Map<String, String> requestParameters = (Map<String, String>)aServiceMap.get(Constants.PARAMETERS);
 			
+			if(requestParameters.containsKey(Constants.BODY)){
+				adapterDTO.setBody(requestParameters.get(Constants.BODY));
+				requestParameters.remove(Constants.BODY);
+			}
+				
 			adapterDTO.setRequestParameters(requestParameters);			
 		}
 		
 		adapterDTO.setBaseStoreConfigDTO(super.getApplicationData().getBaseStoreConfig());
-		
 		Adapter adapter = AdapterFactory.getAdapter(eCommPlatform);
 		
 		//Call all back end services iteratively

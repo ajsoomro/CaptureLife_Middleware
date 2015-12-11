@@ -23,8 +23,16 @@
 	        <param name="URI" value="/productview" />
 	        <param name="requestMethod" value="GET" />
 	        <param name="parameters" value="/byId/[productId]" />
-	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. can have possible values like XML,JSON -->
-	        <param name="produces" value="application/json" /> 	<!-- Can have possible values like XML,HTML,plain_text etc.. -->
+	        <param name="consumes" value="URL" /> 	Default consumes attributes from URL. can have possible values like XML,JSON
+	        <param name="produces" value="application/json" /> 	Can have possible values like XML,HTML,plain_text etc..
+	        <param name="https" value="true" />
+        </api>
+        <api name="byPartNumber">
+	        <param name="URI" value="/productview" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/[byPartNumber]" />
+	        <param name="consumes" value="URL" /> 	Default consumes attributes from URL. can have possible values like XML,JSON
+	        <param name="produces" value="application/json" /> 	Can have possible values like XML,HTML,plain_text etc..
 	        <param name="https" value="true" />
         </api>
     	<api name="bySearchTerm">
@@ -41,6 +49,50 @@
 	        <param name="parameters" value="/[categoryId]" />
 	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. can have possible values like XML,JSON -->
 	        <param name="produces" value="application/json" /> 	<!-- Can have possible values like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+    </api-category>
+    <api-category name="wishList">
+  	  <api name="externalId">
+	        <param name="URI" value="/wishlist" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/[externalId]/item?pageSize=[pageSize]&amp;pageNumber=[pageNumber]&amp;responseFormat=[responseFormat]"/>
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. Can have other possible input formats like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have other possible response formats like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+<!--         "https://localhost:443/wcs/resources/store/10001/wishlist/@default?responseFormat=json" -->
+        
+  	  <api name="@default">
+	        <param name="URI" value="/wishlist" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/@default?responseFormat=[responseFormat]"/>
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. Can have other possible input formats like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have other possible response formats like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+  	  <api name="@self">
+	        <param name="URI" value="/wishlist" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/@self?responseFormat=[responseFormat]"/>
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. Can have other possible input formats like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have other possible response formats like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+  	  <api name="create">
+	        <param name="URI" value="/wishlist" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="?responseFormat=[responseFormat]"/>
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. Can have other possible input formats like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have other possible response formats like XML,HTML,plain_text etc.. -->
+	        <param name="https" value="true" />
+        </api>
+  	  <api name="additem">
+	        <param name="URI" value="/wishlist" />
+	        <param name="requestMethod" value="GET" />
+	        <param name="parameters" value="/create?responseFormat=[responseFormat]"/>
+	        <param name="consumes" value="URL" /> 	<!-- Default consumes attributes from URL. Can have other possible input formats like XML,JSON -->
+	        <param name="produces" value="application/json" /> 	<!-- Can have other possible response formats like XML,HTML,plain_text etc.. -->
 	        <param name="https" value="true" />
         </api>
     </api-category>

@@ -31,7 +31,6 @@ public class ApplicationData{
 		String METHO_NAME = CLASS_NAME+".load()";
 		// load all base tables data
 		loadStorConfigAndRelatedApis();
-		
 		logger.debug(METHO_NAME+" : All tables and properties are loaded on server startup");
 	}
 
@@ -45,7 +44,8 @@ public class ApplicationData{
 		APIConfig apiConfig = new APIConfig();
 		
 		String apiConfigRootPath = null;
-		String sourceRoot = System.getProperty(Constants.ECOMMERCE_SOURCE_ROOT);
+		//String sourceRoot = System.getProperty(Constants.ECOMMERCE_SOURCE_ROOT);
+		String sourceRoot = "C:/Users/abdul.jalil/Dropbox/GITHUB/CaptureLife_Middleware/RESTfulServices/src/com/rc/common/config/ws/source.xml";
 		
 		logger.info(METHO_NAME+" : ecommerceConfigRoot = "+sourceRoot);
 		
@@ -59,7 +59,6 @@ public class ApplicationData{
 							+"\\API-config.xml";
 			
 			File apiConfigFile = new File(this.getClass().getResource(apiConfigRootPath).getPath());
-			
 			apiConfig = (APIConfig) ParserUtility.unmarshal(apiConfig, apiConfigFile);
 			populateApiMap(apiConfig);
 			
@@ -122,7 +121,6 @@ public class ApplicationData{
 					
 					if(paramArray.length > 1)
 						value = paramArray[1];
-					
 					baseStoreConfig.setParameters(key, value);
 				}
 			}
@@ -171,7 +169,6 @@ public class ApplicationData{
 		List<APICategory> apiCategories = config.getApiCategorys();
 		
 		for(APICategory apiCategory : apiCategories){
-			
 			List<API> apis = apiCategory.getApis();
 			for(API api : apis){
 				setApiMap(api.getName(),api);

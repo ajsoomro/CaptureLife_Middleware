@@ -16,6 +16,11 @@ public interface ProductBasedRESTfulServices extends RESTfulBaseService {
 	@Path(Constants.GET_PRODUCT_DETAILS+"/{productId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ResponseDTO getProductByID(@PathParam("productId") String productId);
+	
+	@GET
+	@Path(Constants.PRODUCT_BY_PART_NUMBER+"/{partNumber}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ResponseDTO getProductbyPartNumber(@PathParam("partNumber") String partNumber);
 
 	@GET
 	@Path(Constants.PRODUCTS_BY_SEARCH+"/{productName}")

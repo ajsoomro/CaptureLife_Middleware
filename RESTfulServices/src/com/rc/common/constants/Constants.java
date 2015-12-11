@@ -29,6 +29,7 @@ public class Constants {
 	public static final String CONSUMES = "consumes";
 	public static final String PRODUCES = "produces";
 	public static final String HTTPS = "https";
+	public static final String BODY = "body";
 	
 	/*
 	 * Constant for WCS system name
@@ -89,12 +90,24 @@ public class Constants {
 	 */
 	public static final String GET_PRODUCT_DETAILS = "getProductByID";
 	public static final String PRODUCTS_BY_SEARCH = "bySearchTerm";
+	public static final String PRODUCT_BY_PART_NUMBER = "byPartNumber";
 
 	/*
 	 * Search based APIs
 	 */
 	public static final String STORE_LOCATOR_BY_LOCATION = "byLocation";
 	public static final String STORE_LOCATOR_BY_ZIPCODE = "byZipcode";
+	
+	/*
+	 * WishList Api
+	 */
+	
+	public static final String WISH_LIST_BY_EXTERNAL_ID  = "externalId";
+	public static final String WISH_LIST_BY_DEFAULT  = "@default";
+	public static final String WISH_LIST_CREATE  = "create";
+	public static final String WISH_LIST_SELF  = "@self";
+	public static final String WISH_LIST_ADD_ITEM  = "additem";
+	
 	
 	/*
 	 * Response types
@@ -116,4 +129,7 @@ public class Constants {
 	public static final String LONGITUDE = "longitude";
 	public static final String MAX_ITEMS = "maxItems";
 	public static final String RESPONSE_FORMAT = "responseFormat";
+	public static final String PAGE_SIZE = "pageSize";
+	public static final String PAGE_NUMBER = "pageNumber";
+	
 }

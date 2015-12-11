@@ -22,7 +22,7 @@
 	<bean id="serviceFactory" class="com.rc.delegate.RCServiceFactory">
 		<property name="serviceMap">
 			<map>
-				<entry key="wcs" value-ref="wcsService" />
+				<entry key="wcs" value-ref="wCSSService" />
 				<entry key="hybris" value-ref="hybrisService" />
 				<entry key="magento" value-ref="magentoService" />	
 			</map>
@@ -43,7 +43,7 @@
 
 	<!-- ========================= SERVICE DEFINITIONS ========================= -->	
 
-	<bean id="wcsService" class="com.rc.servicefacade.service.WCSServiceImpl">
+	<bean id="wCSSService" class="com.rc.servicefacade.service.WCSServiceImpl">
 	</bean>
 	
 	<bean id="hybrisService" class="com.rc.servicefacade.service.HybrisServiceImpl"/>
